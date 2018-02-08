@@ -1,14 +1,14 @@
 # Hooks
 
-## Create a Hook
-To create a hook, you need to:
-- create a file `custom/Espo/Custom/Hooks/{EntityName}/{HookName}.php`;
-- declare hook type action;
-- clear Cache in Administration.
+## Crear un Hook
+Para crear un hook, necesita:
+- crear un archivo `custom/Espo/Custom/Hooks/{EntityName}/{HookName}.php`;
+- declarar acción de tipo hook;
+- vaciar el Caché en Adminitración.
 
-## Hook Types
+## Tipos de Hook 
 
-The main hook types are:
+Los tipos de hook principales son:
 
 - beforeSave;
 - afterSave;
@@ -18,18 +18,18 @@ The main hook types are:
 - afterUnrelate;
 - afterMassRelate.
 
-### New Hook Type
-You can use your own hook type and trigger it with
+### Nuevos Tipos de Hook
+Puede usar su propio tipo de hook y accionarlo con
 
 `$this->getEntityManager()->getHookManager()->process($entityType, $hookType, $entity, $options);`.
 
-## Hook Order
-If you have several hooks, related to one Entity Type and with the same hook type, and running order is important, you can set a `public static $order` property in an integer value.
+## Orden de Hook
+Si tiene varios hooks, relacionados a un Tipo de Entidad y con el mismo tipo de hook, y el orden de ejecución es importante, puede configurar una propiedad `public static $order` en un valor entero.
 
-Ascending order - the hook with the smallest order number runs first.
+Elevar orden - se ejecuta primero el hook con el número de orden más pequeño.
 
-## Example
-This example sets Account Name for new Leads, if it is not set.
+## Ejemplo
+Este ejemplo configura el Nombre de Cuenta por nuevos Cables, si no es configurado. 
 
 `custom/Espo/Custom/Hooks/Lead/AccountName.php`
 
@@ -49,5 +49,5 @@ class AccountName extends \Espo\Core\Hooks\Base
 }
 ```
 
-## Global Hooks
-If you need to apply a hook for all entities, you can use common hooks. To do this, put your hook class in Common directory, e.g. `custom/Espo/Custom/Hooks/Common/{HookName}.php`.
+## Hooks Globales
+Si necesita aplicar un hook para todas las entidades, puede usar hooks comunes. Para esto, coloque su clase de hook en el directorio Común, por ejemplo: `custom/Espo/Custom/Hooks/Common/{HookName}.php`.
